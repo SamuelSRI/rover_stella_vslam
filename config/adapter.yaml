@@ -1,0 +1,13 @@
+stella_pose_adapter:
+  ros__parameters:
+    input_topic: /stella_vslam/camera_pose
+    output_topic: /visual_slam/pose
+    base_frame: base_link
+
+    # Laisse vide pour utiliser child_frame_id publié par Stella.
+    camera_frame_override: ""
+
+    tf_timeout_sec: 0.1
+    position_variance: 0.25
+    orientation_variance: 0.10
+    force_z_zero: false
