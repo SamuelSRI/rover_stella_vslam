@@ -58,7 +58,7 @@ def generate_launch_description():
                 "map_frame": "visual_map",
                 "odom_frame": "odom",
                 "robot_base_frame": "base_link",
-                "camera_frame": "camera_front_optical_frame",
+                "camera_frame": "camera_link",
                 "encoding": "bgr8",
             }],
             remappings=[
