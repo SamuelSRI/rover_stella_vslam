@@ -163,7 +163,7 @@ class StellaPoseAdapter(Node):
             camera_base_tf = self.tf_buffer.lookup_transform(
                 camera_frame,
                 self.base_frame,
-                Time.from_msg(msg.header.stamp),
+                Time(),
                 timeout=Duration(seconds=self.tf_timeout),
             )
         except TransformException as exc:
@@ -182,7 +182,8 @@ class StellaPoseAdapter(Node):
         q = rotation_to_quaternion(map_base[:3, :3])
 
         output = PoseWithCovarianceStamped()
-        output.header = msg.header
+        output.header.stamp = msg.header.stamp
+        output.header.frame_id = "visual_map"
         output.pose.pose.position.x = float(map_base[0, 3])
         output.pose.pose.position.y = float(map_base[1, 3])
         output.pose.pose.position.z = float(map_base[2, 3])
